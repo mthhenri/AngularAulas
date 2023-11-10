@@ -1,32 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
-import { Endereco } from 'src/app/models/endereco.models';
+import { Component } from '@angular/core';
+import { Produto } from 'src/app/models/produto.models';
 
 @Component({
   selector: 'app-listar-produto',
   templateUrl: './listar-produto.component.html',
   styleUrls: ['./listar-produto.component.css']
 })
-export class ListarProdutoComponent implements OnInit {
+export class ListarProdutoComponent {
 
-  constructor(private client : HttpClient) { }
+  produtos : Produto[] = [];
 
-  
+  constructor(private client : HttpClient){ }
 
-  ngOnInit(): void {
-    this.client.get<Endereco>("https://viacep.com.br/ws/83323123/json/")
+  //Método que é executado ao abrir um componente
+  ngOnInit() : void{
+    this.client.get<Produto[]>
+      ("https://localhost:7083/api/produto/listar")
       .subscribe({
-        //Funcionou
-        next : (enderecos) => {
-          console.log(`${enderecos.localidade} - ${enderecos.logradouro}`)
+        //A requição funcionou
+        next : (produtos) => {
+          this.produtos = produtos;
         },
-        //Falhou
+        //A requição não funcionou
         error : (erro) => {
-          console.log(erro)
+          console.log(erro);
         }
       });
-    console.log("O componente foi carregado")
   }
 
 }

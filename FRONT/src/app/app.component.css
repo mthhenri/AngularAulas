@@ -1,5 +1,14 @@
-h1{
-    background-color: chartreuse;
-    width: fit-content;
-    padding: 10px;
+.container-main{
+    height: calc(100% - 64px);
+}
+
+.item-list-sidebar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-list-sidebar > span {
+    padding-left: 10px;
+    font-size: small;
 }

@@ -1,3 +1,42 @@
-<h1>Listagem de produtos</h1>
+<!-- Nav bar -->
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>
+            menu
+        </mat-icon>
+    </button>
+    <span>
+        Ecommerce        
+    </span>
+</mat-toolbar>
 
-<app-listar-produto></app-listar-produto>
+<mat-sidenav-container class="container-main">
+    <!-- Sidebar -->
+    <mat-sidenav #sidenav opened="" mode="push">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/pages/produto/listar"> 
+                <div class="item-list-sidebar">
+                    <mat-icon> list </mat-icon>
+                    <span> Listar Produtos </span>
+                </div>
+            </a>
+            <a mat-list-item routerLink="/pages/produto/cadastrar"> 
+                <div class="item-list-sidebar">
+                    <mat-icon> add </mat-icon>
+                    <span> Cadastrar Produtos </span>
+                </div>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Main content -->
+    <mat-sidenav-content>
+        <!-- Dynamic Content -->
+        <router-outlet>
+            <!-- Content  -->
+        </router-outlet>
+    </mat-sidenav-content>    
+</mat-sidenav-container>
+
+
+
